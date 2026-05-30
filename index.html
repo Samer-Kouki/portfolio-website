@@ -9,14 +9,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Umami Analytics Script -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="6aadfb38-a87f-4a6f-bf3e-2e313df33f61"></script>
+
+    <style>
+        /* Kleiner Style für den Kopier-Effekt */
+        .copy-badge {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .copy-badge:active {
+            transform: scale(0.95);
+        }
+        /* Tooltip-Meldung beim Kopieren */
+        .copy-tooltip {
+            position: absolute;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            z-index: 10;
+        }
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+        /* Fix für Logo-Anzeige in den Karten */
+        .project-image-box {
+            background-color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .project-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
     <div class="glow-bg"></div>
 
-    <!-- HERO SECTION (Messerscharfe Kommunikation) -->
     <header class="animate-fade-up">
         <div class="container hero-grid">
             <div class="hero-text">
@@ -32,11 +78,14 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="tel:+4917693113951" class="btn btn-primary">📞 +49 176 93113951</a>
+                    <span class="btn btn-primary copy-badge" onclick="copyToClipboard('+4917693113951', this)">
+                        <span class="phone-text">📞 +49 176 93113951</span>
+                        <span class="copy-tooltip">Nummer kopiert! ✅</span>
+                    </span>
+                    
                     <a href="https://wa.me/4917693113951?text=Hallo%20Samer,%20ich%20habe%20dein%20Portfolio%20gesehen%20und%20wuerde%20gerne%20ein%20Projekt%20besprechen." target="_blank" class="btn btn-whatsapp">💬 WhatsApp Chat</a>
                     
-                    <!-- HIER DEINEN LINKEDIN LINK EINTRAGEN -->
-                    <a href="HIER_DEIN_LINKEDIN_LINK_EINTRAGEN" target="_blank" class="btn btn-linkedin">
+                    <a href="https://www.linkedin.com/in/samer-kouki/" target="_blank" class="btn btn-linkedin">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         LinkedIn
                     </a>
@@ -57,7 +106,6 @@
         </div>
     </header>
 
-    <!-- PORTFOLIO SECTION -->
     <section id="projekte" class="container animate-fade-up delay-1">
         <div class="section-title">
             <h2>Referenzen & Erfolge</h2>
@@ -66,10 +114,9 @@
         
         <div class="projects-grid">
             
-            <!-- PROJEKT 1: Alemannia Essen -->
             <div class="project-card">
                 <div class="project-image-box">
-                    <div class="project-overlay-title">Alemannia Essen</div>
+                    <img src="Logo.jpeg" alt="Alemannia Essen Logo">
                 </div>
                 <div class="project-content">
                     <div class="project-badge">Web Development</div>
@@ -79,22 +126,20 @@
                 </div>
             </div>
 
-            <!-- PROJEKT 2: Dein zweites Projekt -->
             <div class="project-card">
-                <div class="project-image-box" style="background: linear-gradient(135deg, #334155 0%, #0f172a 100%);">
-                    <div class="project-overlay-title">Zweites Projekt</div>
+                <div class="project-image-box">
+                    <img src="3.jpeg" alt="ES MAX Logo">
                 </div>
                 <div class="project-content">
-                    <div class="project-badge">Software & IT</div>
-                    <h3>Projekt Name</h3>
-                    <p>Ein weiteres herausragendes Beispiel für sauberen Code, skalierbare Architektur und höchste Sicherheitsstandards.</p>
-                    <a href="#" target="_blank" class="project-action">Projekt zeigen ↗</a>
+                    <div class="project-badge">Web Development</div>
+                    <h3>ES MAX</h3>
+                    <p>Entwicklung und Optimierung einer klaren Webpräsenz für professionellen Telekommunikations- & Montageservice.</p>
+                    <a href="https://dienstleistungen-max.de/" target="_blank" class="project-action">Projekt zeigen ↗</a>
                 </div>
             </div>
 
-            <!-- PROJEKT 3: Die attraktive Erfolgs-Karte für den Kunden -->
             <div class="project-card client-card">
-                <div class="project-image-box client-box">
+                <div class="project-image-box client-box" style="background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;">
                     <div class="project-overlay-title">Ihr Erfolg</div>
                 </div>
                 <div class="project-content">
@@ -108,7 +153,6 @@
         </div>
     </section>
 
-    <!-- KONTAKT SECTION (Psychologie: Keine Hürden) -->
     <section id="kontakt" class="animate-fade-up delay-2">
         <div class="container contact-grid">
             <div class="contact-info-text">
@@ -117,13 +161,14 @@
                 <p class="contact-lead">Kein unnötiges Fachwissen nötig, keine Warteschleifen. Schreiben Sie mir unkompliziert per WhatsApp oder rufen Sie mich direkt an. Ich kümmere mich um die Technik – Sie sich um Ihr Geschäft.</p>
                 
                 <div class="direct-channels">
-                    <a href="tel:+4917693113951" class="channel-card">
+                    <div class="channel-card copy-badge" onclick="copyToClipboard('+4917693113951', this)">
                         <span class="channel-icon">📞</span>
                         <div>
-                            <span class="channel-label">Direkt anrufen</span>
+                            <span class="channel-label">KLICKEN ZUM KOPIEREN</span>
                             <span class="channel-value">+49 176 93113951</span>
                         </div>
-                    </a>
+                        <span class="copy-tooltip">Nummer kopiert! ✅</span>
+                    </div>
 
                     <a href="https://wa.me/4917693113951?text=Hallo%20Samer,%20ich%20habe%20dein%20Portfolio%20gesehen%20und%20wuerde%20gerne%20ein%20Projekt%20besprechen." target="_blank" class="channel-card whatsapp-card">
                         <span class="channel-icon">💬</span>
@@ -136,17 +181,21 @@
             </div>
 
             <div class="contact-form-container">
-                <form name="portfolio-kontakt" method="POST" data-netlify="true">
+                <form action="https://formspree.io/f/mykvazvz" method="POST">
                     <div class="form-group">
-                        <label for="name">Ihr Name</label>
+                        <label for="name">Ihr Name (Vollname)</label>
                         <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Ihre E-Mail</label>
-                        <input type="email" id="email" name="email" placeholder="name@firma.de" required>
+                        <label for="email">Ihre E-Mail / Gmail</label>
+                        <input type="email" id="email" name="email" placeholder="name@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Wie kann ich helfen?</label>
+                        <label for="phone">Ihre Telefonnummer (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 151 12345678">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Wie kann ich helfen? (Projektbeschreibung)</label>
                         <textarea id="message" name="message" rows="5" placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Idee..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary full-width">Anfrage unverbindlich senden</button>
@@ -155,12 +204,27 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container footer-flex">
             <p>&copy; 2026 Samer Kouki. All Rights Reserved. | IT Consulting & Software Development</p>
         </div>
     </footer>
+
+    <script>
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const tooltip = element.querySelector('.copy-tooltip');
+                if (tooltip) {
+                    tooltip.classList.add('show');
+                    setTimeout(() => {
+                        tooltip.classList.remove('show');
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error('Fehler beim Kopieren: ', err);
+            });
+        }
+    </script>
 
 </body>
 </html>
